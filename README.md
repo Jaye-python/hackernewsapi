@@ -15,7 +15,7 @@
 ```
 $ cd Desktop
 ```
-2. Create new folder/director
+2. Create new folder/directory
 ```
 $ mkdir hackernews
 ```
@@ -31,7 +31,7 @@ $ python3 -m venv ./venv
 ```
 $ source venv/bin/activate
 ```
-6. Upgrade PIP installer
+6. Clone this git repo
 ```
 $ python -m pip install --upgrade pip
 ```
@@ -43,3 +43,4 @@ $ python -m pip install django
 ```
 $ django-admin startproject hackernews .
 ```
+9. 
