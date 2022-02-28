@@ -47,7 +47,7 @@ pip install -r requirements.txt
 ```
 python manage.py runserver
 ```
-10. To run the Celery workers used to sync the DB
+10. To run the Celery workers used to seed the DB
 ```
 celery -A hackernews worker -l info
 ```
