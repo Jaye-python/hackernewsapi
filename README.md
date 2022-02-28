@@ -33,14 +33,18 @@ $ source venv/bin/activate
 ```
 6. Clone this git repo
 ```
-$ python -m pip install --upgrade pip
+$ git clone https://github.com/Jaye-python/hackernewsapi.git
 ```
-7. Install Django
+7. Move into the hackernews folder 
 ```
-$ python -m pip install django
+$ cd hackernews
 ```
-8. Create Django project in this folder (notice the trailing dot)
+8. Install dependencies
 ```
-$ django-admin startproject hackernews .
+$ pip install -r requirements.txt
 ```
-9. 
+9. Run
+```
+$ ./manage.py runserver
+```
+
