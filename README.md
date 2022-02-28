@@ -10,7 +10,7 @@
 7. Create a POST request API to add news items to the DB
 8. Items created via hackernews sync should not be deletable, only items created via API should be allowed to be deleted (this was accomplished by first creating a DB Boolean field titled: **'API_CREATED'** with a default value of **'False'**. When a news item is created via API, this field is set to **'True'** at the view level. Only objects with **True** for this field are allowed to be deleted
 
-### To implement:
+### To launch this app on your system:
 1. Navigate to your desktop
 ```
 cd Desktop
