@@ -10,42 +10,52 @@
 7. Create a POST request API to add news items to the DB
 8. Items created via hackernews sync should not be deletable, only items created via API should be allowed to be deleted (this was accomplished by first creating a DB Boolean field titled: **'API_CREATED'** with a default value of **'False'**. When a news item is created via API, this field is set to **'True'** at the view level. Only objects with **True** for this field are allowed to be deleted
 
-### To implement (Note: These are Linux commands):
+### To implement:
 1. Navigate to your desktop
 ```
-$ cd Desktop
+cd Desktop
 ```
 2. Create new folder/directory
 ```
-$ mkdir hackernews
+mkdir hackernews
 ```
 3. Navigate into this new folder
 ```
-$ cd hackernews
+cd hackernews
 ```
 4. Create new Python Virtual environment
 ```
-$ python3 -m venv ./venv
+python3 -m venv ./venv
 ```
 5. Activate this new virtual environment
 ```
-$ source venv/bin/activate
+source venv/bin/activate
 ```
 6. Clone this git repo
 ```
-$ git clone https://github.com/Jaye-python/hackernewsapi.git
+git clone https://github.com/Jaye-python/hackernewsapi.git
 ```
 7. Move into the hackernewsapi folder 
 ```
-$ cd hackernewsapi
+cd hackernewsapi
 ```
 8. Install dependencies
 ```
-$ pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 9. Launch
 ```
-$ python manage.py runserver
+python manage.py runserver
 ```
-See ss.png:
+10. To run the Celery workers used to sync the DB
+```
+celery -A hackernews worker -l info
+```
+11. To run the Celery Beat workers to sync the DB every 5 minutes
+```
+celery -A hackernews beat -l info
+```
+
+#### Starting a sample django project example:
+
 ![Django Project Creation_Jaye](assets/images/ss.png)
