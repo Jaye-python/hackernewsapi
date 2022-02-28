@@ -35,17 +35,17 @@ $ source venv/bin/activate
 ```
 $ git clone https://github.com/Jaye-python/hackernewsapi.git
 ```
-7. Move into the hackernews folder 
+7. Move into the hackernewsapi folder 
 ```
-$ cd hackernews
+$ cd hackernewsapi
 ```
 8. Install dependencies
 ```
 $ pip install -r requirements.txt
 ```
-9. Run
+9. Launch
 ```
-$ ./manage.py runserver
+$ python manage.py runserver
 ```
 See ss.png:
 ![Django Project Creation_Jaye](assets/images/ss.png)
