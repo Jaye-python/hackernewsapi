@@ -47,4 +47,5 @@ $ pip install -r requirements.txt
 ```
 $ ./manage.py runserver
 ```
-
+See ss.png:
+! [Django Project Creation_Jaye] (/ss.png)
