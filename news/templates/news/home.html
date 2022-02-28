@@ -1,0 +1,196 @@
+{% extends 'news/base.html' %}
+
+{% block title %}
+{% if news %}
+Challenge Home Page 
+{% elif newsdetails %}
+News Details
+{% endif%}
+{% endblock %}
+
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %} {% endblock %}
+
+{% block content %}
+
+
+<div class="container mt-4 bg-secondary p-5 border rounded shadow">  {# HEADER CONTAINER #}
+<div class="row">                                               {# HEADER ROW #}
+<div class="col-lg-12">
+<div class="heading text-center">
+
+
+<h2 class="text-white">Challenge.</h2> <br>
+<p class="text-white">
+  [Please click 'Seed Database' for initial data and refresh subsequently]
+</p>
+
+
+</div>
+</div>
+
+</div> {# row #}
+</div> {# container #}
+
+
+<div class="container mt-4 p-2 border rounded shadow">  {#  CONTAINER #}
+
+{% if news %}
+
+
+{% if messages %}
+{% for field in messages %}
+<div class="row justify-content-center text-center">
+<p class="text-center alert alert-primary text-white bg-danger" role="alert"> <i class="bi bi-info-circle text-white" style="font-size: 2rem;"> </i>  {{ field }}  </p>
+</div>
+{% endfor %}
+{% endif %}
+
+<p><a class="btn btn-warning shadow-sm text-white m-2 btn-sm" onclick="history.go(-1)">Go back</a></p>
+
+<form action="{% url 'home' %}" method="get">
+  <input type="text" name="filter" id="filter">
+  <input type="submit" value="Filter by Title text" class="btn btn-primary m-3 shadow-sm text-white btn-sm"">
+</form>
+
+<form action="{% url 'home' %}" method="get">
+  <input type="text" name="type" id="type">
+  <input type="submit" value="Get by News Type" class="btn btn-success primary m-3 shadow-sm text-white btn-sm"">
+</form>
+
+
+    <div class="table-responsive">
+        <table class="table table-sm table-bordered rounded shadow-sm">
+
+          <thead class="thead-dark bg-success text-white">
+            <tr>
+              <th scope="col">News from Hackernews</th>
+
+                        
+
+            </tr>
+          </thead>
+          
+          <thead class="thead-dark bg-light">
+            <tr>
+                            
+              <th scope="col">Hacker ID</th>
+            <th scope="col">Type</th>
+              <th scope="col">Title</th>
+              <th scope="col">Details</th>
+              <th scope="col">Delete</th>
+              
+              
+
+            </tr>
+          </thead>
+          <tbody>
+    
+    {% for x in news %}
+            <tr>
+                            
+              <td>{{ x.hacker_id }}</td>
+              
+              {# <th><a href="{{ x.get_absolute_url }}">{{ x.hacker_id }}</a></th> #}
+
+              <td><strong class="text-primary">{{ x.type }}</strong></td>
+              <td>{{ x.title }}</td>
+              <td><a href="{% url 'details' x.hacker_id %}" class="btn btn-info text-white btn-sm shadow-sm"> <small>Details</small> </a> </td>
+
+            {% if x.api_created %}  {# Confirm if object is api_created before displaying the delete button #}
+            <td><a href="{% url 'delete' x.hacker_id %}" class="btn btn-warning text-white btn-sm shadow-sm mb-2"> <small>Delete</small> </a></td>
+            {% else %}
+            <td><small>This wasn't created via API. <br> It may not be deleted</small></td>
+            {% endif %}
+              
+              
+            </tr>
+    {% endfor %}
+          </tbody>
+        </table>
+    </div>
+
+    <nav aria-label="News">
+        <ul class="pagination justify-content-center">
+          {% if page_obj.has_previous %}
+          <li class="page-item"> <a class="page-link" href="?page=1">&laquo; First</a><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+          {% endif %}
+      
+          <li class="page-item"> <span class="page-link">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span> .</li>
+      
+          {% if page_obj.has_next %}
+          <li class="page-item"> <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a></li>
+          {% endif %}
+      
+        </ul>
+      </nav>
+
+{% endif %}
+
+{% if newsdetails %}
+<div class="table-responsive">
+  <table class="table table-sm table-bordered rounded shadow-sm">
+    <p><a class="btn btn-warning shadow-sm text-white m-2 btn-sm" onclick="history.go(-1)">Go back</a></p>
+    <thead class="thead-dark bg-warning text-white">
+      <tr>
+        <th scope="col">Details of {{ newsdetails }} </th>
+       
+      </tr>
+    </thead>
+    
+    <thead class="thead-dark bg-light">
+      <tr>
+                
+        <th scope="col">ID</th>
+      <th scope="col">Type</th>
+        <th scope="col">Title</th>
+        <th scope="col">Creator</th>
+        <th scope="col">Score</th>
+        <th scope="col">Descendants</th>
+        <th scope="col">URL</th>
+        <th scope="col">Delete</th>
+        
+        
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+                
+        <td>{{ newsdetails.hacker_id }}</td>
+        <td><strong class="text-primary">{{ newsdetails.type }}</strong></td>
+        <td>{{ newsdetails.title }}</td>
+        <td>{{ newsdetails.creator }}</td>
+        <td>{{ newsdetails.score }}</td>
+        <td>{{ newsdetails.descendants }}</td>
+        <td>{{ newsdetails.url }}</td>
+        {% if newsdetails.api_created %} {# Confirm if object is api_created before displaying the delete button #}
+            <td><a href="{% url 'delete' newsdetails.hacker_id %}" class="btn btn-warning text-white btn-sm shadow-sm mb-2"> <small>Delete</small> </a></td>
+            {% else %}
+            <td><small>This wasn't created via API. <br> It may not be deleted</small></td>
+            {% endif %}
+        
+      
+        
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+{% endif %}
+
+
+
+
+    
+</div>   {# HEADER CONTAINER #}
+
+
+
+
+{% endblock %}
+
