@@ -55,7 +55,3 @@ celery -A hackernews worker -l info
 ```
 celery -A hackernews beat -l info
 ```
-
-#### Starting a sample django project example:
-
-![Django Project Creation_Jaye](assets/images/ss.png)
