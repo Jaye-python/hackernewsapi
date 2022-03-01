@@ -13,9 +13,9 @@ def seedDBTask():
     list_from_api = response2.json()
     
 
-    # GET MOST RECENT 100 IDs
+    # GET MOST RECENT 20 IDs
     sort_list_from_api = sorted(list_from_api)
-    numb_list = sort_list_from_api[-100:]            # DETERMINE NUMBER OF IDS TO BE SEEDED
+    numb_list = sort_list_from_api[-20:]            # DETERMINE NUMBER OF IDS TO BE SEEDED
 
     for x in numb_list:
         url_news = "https://hacker-news.firebaseio.com/v0/item/{}.json?.json".format(x)
