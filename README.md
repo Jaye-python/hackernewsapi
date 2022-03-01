@@ -1,7 +1,7 @@
 # hackernewsapi
-## This project is to synchronize a database with news provided by [Hackernews API](https://hackernews.api-docs.io/).
+## This Python/Django project is to synchronize a database every 5 minutes with hackernews items by consuming the [Hackernews API](https://hackernews.api-docs.io/).
 ### Tasks to be done:
-1. Sync the published news from hackernews to the DB every 5 minutes (this was accomplished using Celery)
+1. Sync the published news from hackernews to the DB every 5 minutes (this was accomplished using Celery and RabbitMQ as message broker)
 2. Implement a view to list the latest news with pagination
 3. Create a detail view to see news items in detail
 4. Create a filter box to allow filtering by the type of item
